@@ -9,4 +9,6 @@ public interface BookService {
     public String saveBook(Book book);
 
     public List<Book> getAllBooks();
+
+    public Book getBookById(int id);
 }

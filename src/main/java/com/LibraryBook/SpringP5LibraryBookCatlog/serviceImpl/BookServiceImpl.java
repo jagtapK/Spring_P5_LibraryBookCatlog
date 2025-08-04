@@ -13,6 +13,7 @@ public class BookServiceImpl implements BookService {
 
     @Autowired
     private BookRepository bookRepository;
+
     @Override
     public String saveBook(Book book) {
         Book book1 = bookRepository.save(book);
@@ -23,5 +24,12 @@ public class BookServiceImpl implements BookService {
     public List<Book> getAllBooks() {
         List<Book> getAllBook = bookRepository.findAll();
         return getAllBook;
+    }
+
+    @Override
+    public Book getBookById(int id) {
+        Book BookById = bookRepository.findById(id).orElseThrow(() ->
+                new NullPointerException("Id not found" + id));
+        return BookById;
     }
 }

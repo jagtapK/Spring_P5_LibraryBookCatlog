@@ -26,8 +26,19 @@ public class BookController {
         return new ResponseEntity<>("Book details saved", HttpStatus.CREATED);
     }
 
+    @GetMapping("/getAllBook")
     public ResponseEntity<List<Book>> getALlBook() {
         List<Book> bookList = bookService.getAllBooks();
         return new ResponseEntity<>(bookList, HttpStatus.OK);
+    }
+
+    @GetMapping("/GetById/{id}")
+    public ResponseEntity<Book> getById(@PathVariable int id) {
+        Book book = bookService.getBookById(id);
+        if (book != null) {
+            return ResponseEntity.ok(book);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 }
