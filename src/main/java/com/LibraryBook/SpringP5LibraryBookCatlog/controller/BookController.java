@@ -17,6 +17,8 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
+    //This method created to add book details in database
+
     @PostMapping("/saveBook")
     public ResponseEntity<String> addBooks(@RequestBody List<Book> book) {
         book.forEach(Book1 -> {
@@ -26,11 +28,15 @@ public class BookController {
         return new ResponseEntity<>("Book details saved", HttpStatus.CREATED);
     }
 
+    //This Method created to get all Book Details on postman
+
     @GetMapping("/getAllBook")
     public ResponseEntity<List<Book>> getALlBook() {
         List<Book> bookList = bookService.getAllBooks();
         return new ResponseEntity<>(bookList, HttpStatus.OK);
     }
+
+    //This Method created to get Books By their Id
 
     @GetMapping("/GetById/{id}")
     public ResponseEntity<Book> getById(@PathVariable int id) {
