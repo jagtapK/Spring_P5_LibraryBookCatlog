@@ -18,11 +18,16 @@ public class BookController {
     private BookService bookService;
 
     @PostMapping("/saveBook")
-    public ResponseEntity<String> addBooks(@RequestBody List<Book> book){
-        book.forEach(Book1->{
+    public ResponseEntity<String> addBooks(@RequestBody List<Book> book) {
+        book.forEach(Book1 -> {
             System.err.println(Book1);
             bookService.saveBook(Book1);
         });
-        return new ResponseEntity<>("Book details saved",HttpStatus.CREATED);
+        return new ResponseEntity<>("Book details saved", HttpStatus.CREATED);
+    }
+
+    public ResponseEntity<List<Book>> getALlBook() {
+        List<Book> bookList = bookService.getAllBooks();
+        return new ResponseEntity<>(bookList, HttpStatus.OK);
     }
 }
