@@ -14,4 +14,6 @@ public interface BookService {
 
     //to get books by their Id
     public Book getBookById(int id);
+
+    public String deleteById(int id);
 }

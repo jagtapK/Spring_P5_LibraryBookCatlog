@@ -36,7 +36,7 @@ public class BookController {
         return new ResponseEntity<>(bookList, HttpStatus.OK);
     }
 
-    //This Method created to get Books By their Id
+    //This Method created to get Books By their id
 
     @GetMapping("/GetById/{id}")
     public ResponseEntity<Book> getById(@PathVariable int id) {
@@ -46,5 +46,11 @@ public class BookController {
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @GetMapping("/deleteById/{id}")
+    public ResponseEntity<String> deleteById(int id){
+        String book = bookService.deleteById(id);
+        return new ResponseEntity<>(book,HttpStatus.OK);
     }
 }

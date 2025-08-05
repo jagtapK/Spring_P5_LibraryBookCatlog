@@ -32,4 +32,10 @@ public class BookServiceImpl implements BookService {
                 new NullPointerException("Id not found" + id));
         return BookById;
     }
+
+    @Override
+    public String deleteById(int id) {
+        bookRepository.deleteById(id);
+        return "Books Deleted";
+    }
 }
